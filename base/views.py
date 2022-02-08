@@ -1,5 +1,3 @@
-from itertools import count
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -7,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
-from django.db.models import Count
 from .forms import RoomForm, UserForm, MyUserCreationForm
 
 # Create your views here.
@@ -129,7 +126,6 @@ def createRoom(request):
             name=request.POST.get('name'),
             description=request.POST.get('description'),
         )
-
         return redirect('home')
 
     context = {'form': form, 'topics': topics}
